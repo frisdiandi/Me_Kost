@@ -19,9 +19,14 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('level');
             $table->rememberToken();
             $table->timestamps();
         });
+
+         DB::table('users')->insert([
+            ['name' => 'Administrator', 'email' => 'admin@mekost.com', 'password' => bcrypt('Mekost2022'), 'level' => '1'],
+        ]);
     }
 
     /**
